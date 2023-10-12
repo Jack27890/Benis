@@ -1,0 +1,76 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UntoldRPServer Documentation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico"
+</head>
+<body>
+    <div id="header">
+    <header>
+        <h1>UntoldRPServer Docs</h1>
+    </header>
+    </div>
+    <!-- <nav>
+        <ul>
+            <li><a href="#section1">Section 1</a></li>
+            <li><a href="#section2">Section 2</a></li>
+        </ul>
+    </nav> -->
+    <div id="main">
+        <section id="section1">
+            <h2>About Us</h2>
+            <p>We're more than just a team; we're a passionate collective committed to crafting unforgettable RP experiences in the untamed world of Red Dead Redemption 2.</p>
+        </section>
+        <section id="section2">
+            <h2>Discovering Events</h2>
+            <p>For the lowdown on upcoming events and our meticulously planned schedule, keep a close eye on our announcements section or chat up one of our friendly staff members.</p>
+        </section>
+      <section id="section2">
+            <h2>Joining the Adventure</h2>
+            <p>Ready to saddle up and join us? Look out for our recruitment posts on Xbox, or simply <a href='https://discord.gg/untoldrp'>join our Discord server</a> to connect with us.</p>
+        </section><section id="section2">
+            <h2>A Pictorial Journey</h2>
+            <p>Explore our gallery to immerse yourself in the visual tapestry of our RP world, capturing the grit and grandeur of the wild west.</p>
+        </section><section id="section2">
+            <h2>Getting in Touch</h2>
+            <p>Need assistance or just want to shoot the breeze with our admin members? Send a Discord message or drop into one of our chat rooms - we're always here to help.</p>
+        </section><section id="section2">
+            <h2>Staying in the Loop</h2>
+            <p>Stay informed with announcements or dive into the latest RP news by checking out our newspaper channel. It's the quickest way to know what's shaking in our RP universe.</p>
+        </section><section id="section2">
+            <h2>Community Count</h2>
+            <p>We've grown to a remarkable <span title="Our live Discord member count!" id="communityCount">[loading member count...]</span> members strong, each adding their unique stories and characters to our ever-evolving narrative.</p>
+        </section>
+      <section id="section2">
+            <h2>Navigating the Frontier</h2>
+            <p>Our server is designed for smooth sailing. If you ever find yourself lost in the vast expanse of our RP world, don't hesitate to reach out to our staff for guidance.</p>
+        </section>
+      <br><br><br>
+      <section id="section2">
+            <p>So, partner, saddle up and ride with us into the sunset as we script our own Untold Tales of the West. Welcome to the adventure!<br><br>
+            Contact info:<br>
+            Email: <a target="_blank" href="mailto:UntoldRP.Buisness@outlook.com">UntoldRP.Buisness@outlook.com</a><br>
+            Xbox: <a target="_blank" href="https://account.xbox.com/en-us/profile?gamertag=Jack27890">Jack27890</a><br>
+            Discord: <a target="_blank" href="https://discordapp.com/users/1063266935527190550">jack27890</a><br>
+            Discord Server: <a target="_blank" href="https://discord.gg/untoldrp">https://discord.gg/untoldrp</a><br>
+            Telegram: <a href="https://t.me/Jack278900">Jack278900</a></p>
+        </section>
+      <br><br><br>
+      <section id="section2">
+            <a target="_blank" href="./billiam">TOS</a><br>
+            <a href="https://t.me/Jack278900">Other link or something</a></p>
+        </section>
+      
+    </div>
+  <script>
+    fetch("/membercount")
+  .then((response) => response.json())
+  .then((json) => {
+    document.getElementById('communityCount').innerText = json.members
+  });
+  </script>
+</body>
+</html> 

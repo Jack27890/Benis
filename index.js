@@ -4,7 +4,7 @@ const { Client, GatewayIntentBits, ActivityType, Partials, Collection } = requir
 
 const { OpenAI } = require('openai');
 const openai = new OpenAI({
-  apiKey: process.env['openAiKey'],
+  apiKey: "process.env['openAiKey']",
 });
 
 
@@ -60,8 +60,8 @@ async function getMembers() {
 }
 
 app.get('/membercount', (req, res) => {
-  getMembers().then(()=>{
-    res.json({members: guild.members.cache.filter(member => !member.user.bot).size});
+  getMembers().then(() => {
+    res.json({ members: guild.members.cache.filter(member => !member.user.bot).size });
   })
 });
 
@@ -87,7 +87,7 @@ let guild;
 async function main() {
 
   new Promise((resolve) => {
-    client.login('MTE0ODgzNDk1MzE2MTg2NzI2NA.G-oIVS.NdcYBu2vMpftcxnHuqvkFTy8vvoimqQ_GIXk1o');
+    client.login('MTE0ODgzNDk1MzE2MTg2NzI2NA.Gqp1Yd.yBPndj3J9k2415AfLpzmohGMFGRGfyXD9usIS8');
 
     client.on('ready', async () => {
       console.log(`Logged in as ${client.user.tag}!`);
@@ -97,6 +97,45 @@ async function main() {
         activities: [{ name: `GO FUCK YOURSELF`, type: ActivityType.Custom }],
         status: 'online'
       });
+
+      let inviteCache = new Map()
+
+      client.guilds.cache.forEach(async (guild) => {
+        const invites = await guild.invites.fetch();
+        invites.forEach((invite) => {
+          inviteCache.set(invite.code, invite.uses);
+        });
+      });
+
+
+      client.on('guildMemberAdd', async (member) => {
+        const loggingChannel = client.channels.cache.get('1157524010125492334');
+        const invite = await getInviteUsed(member);
+
+        if (invite) {
+          const inviterName = client.users.cache.get(invite.inviter).username;
+          loggingChannel.send(`<@${member.id}> joined using invite from ${inviterName}.`);
+        } else {
+          loggingChannel.send(`${member.displayName} (${member.id}) joined using an unknown invite.`);
+        }
+      });
+
+      async function getInviteUsed(member) {
+        const invites = await member.guild.invites.fetch()
+        for (const [code, uses] of inviteCache) {
+          const currentInvite = invites.get(code);
+
+          if (!currentInvite) continue;
+          if (currentInvite.uses > uses) {
+            // Update the cache with the latest invite usage
+            inviteCache.set(code, currentInvite.uses);
+            return { code, inviter: currentInvite.inviter.id };
+          } else {
+
+          }
+        }
+        return null;
+      }
 
       const pingCommand = {
         name: "ping",

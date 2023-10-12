@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+input, textarea {
+  width: 90%;
+}
+
+textarea {
+  height: 50vh;
+}
